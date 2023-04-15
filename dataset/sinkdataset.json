@@ -13,7 +13,7 @@
 				"folderPath": "project/output",
 				"fileSystem": "projectcontainer"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "\t",
 			"escapeChar": "\\",
 			"quoteChar": "\""
 		},
