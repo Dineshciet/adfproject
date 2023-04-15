@@ -1,0 +1,9 @@
+{
+	"name": "dineshdatafactory1504",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a4a6a3d9-15c3-45ef-9459-84e928b94cf6",
+		"tenantId": "23389027-cb9f-46fb-a8fb-3609a69df8fe"
+	}
+}
