@@ -168,14 +168,6 @@
 							"Dataset_container": {
 								"value": "@pipeline().parameters.Pipeline_container",
 								"type": "Expression"
-							},
-							"Dateset_dict": {
-								"value": "@pipeline().parameters.Pipeline_archivedir",
-								"type": "Expression"
-							},
-							"Dateset_filename": {
-								"value": "@pipeline().parameters.Pipeline_Filename",
-								"type": "Expression"
 							}
 						}
 					}
