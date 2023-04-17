@@ -180,6 +180,45 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "Delete1",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "parameter_dateset",
+						"type": "DatasetReference",
+						"parameters": {
+							"Dataset_container": {
+								"value": "@pipeline().parameters.Pipeline_container",
+								"type": "Expression"
+							},
+							"Dateset_dict": {
+								"value": "@pipeline().parameters.Pipeline_outputdir",
+								"type": "Expression"
+							},
+							"Dateset_filename": {
+								"value": "@pipeline().parameters.Pipeline_Filename",
+								"type": "Expression"
+							}
+						}
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
 			}
 		],
 		"parameters": {
