@@ -187,7 +187,7 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"FWfilename": {
-														"value": "@item().name",
+														"value": "@activity('Get_filenames').output.childItems",
 														"type": "Expression"
 													}
 												}
@@ -199,7 +199,7 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"sinkfilename": {
-														"value": "@item().name",
+														"value": "@activity('Get_filenames').output.childItems",
 														"type": "Expression"
 													}
 												}
