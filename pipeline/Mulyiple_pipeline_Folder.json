@@ -127,7 +127,7 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"sinkfilename2": {
-														"value": "@activity('Get_filenames').output.childItems",
+														"value": "@item().name",
 														"type": "Expression"
 													}
 												}
