@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"sink_filename1": {
+			"sink_filename2": {
 				"type": "string"
 			}
 		},
