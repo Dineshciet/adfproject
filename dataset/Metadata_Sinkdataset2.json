@@ -19,7 +19,7 @@
 					"value": "@dataset().sink_filename1",
 					"type": "Expression"
 				},
-				"folderPath": "project/archive",
+				"folderPath": "project/output/Sales",
 				"fileSystem": "projectcontainer"
 			},
 			"columnDelimiter": ",",
