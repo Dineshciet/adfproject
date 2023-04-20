@@ -15,6 +15,12 @@
 					"referenceName": "Multiple_pipeline",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "Folder_pipeline",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
