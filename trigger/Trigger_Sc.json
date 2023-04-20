@@ -1,0 +1,24 @@
+{
+	"name": "Trigger_Sc",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Copypipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 2,
+				"startTime": "2023-04-20T17:18:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
