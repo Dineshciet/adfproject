@@ -115,7 +115,10 @@
 												"referenceName": "Metadata_Source_dataset",
 												"type": "DatasetReference",
 												"parameters": {
-													"Filename": "@item().name"
+													"Filename": {
+														"value": "@item().name",
+														"type": "Expression"
+													}
 												}
 											}
 										],
