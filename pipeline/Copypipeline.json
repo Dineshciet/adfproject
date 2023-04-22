@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "salecopy",
+				"description": "selected 1 file from input to output",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -49,19 +50,20 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SaleDelimitedfile",
+						"referenceName": "select1inputfile",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "sinkdataset",
+						"referenceName": "sink1input2output",
 						"type": "DatasetReference"
 					}
 				]
 			},
 			{
-				"name": "Copy data1",
+				"name": "salecopy2",
+				"description": "selected 1 file from output to archive",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -114,7 +116,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "sinkdataset",
+						"referenceName": "sink1input2output",
 						"type": "DatasetReference"
 					}
 				],
@@ -130,7 +132,7 @@
 				"type": "Delete",
 				"dependsOn": [
 					{
-						"activity": "Copy data1",
+						"activity": "salecopy2",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -146,7 +148,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "sinkdataset",
+						"referenceName": "sink1input2output",
 						"type": "DatasetReference"
 					},
 					"enableLogging": false,
