@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"Folder2_sink": {
+			"Folder2filename_sink": {
 				"type": "string"
 			}
 		},
