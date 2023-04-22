@@ -49,7 +49,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "archivedata",
+						"referenceName": "sink1archive",
 						"type": "DatasetReference"
 					}
 				],
