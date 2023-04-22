@@ -16,7 +16,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@dataset().Folder2_sink",
+					"value": "@dataset().Folder2filename_sink",
 					"type": "Expression"
 				},
 				"folderPath": "project/output/Sales",
