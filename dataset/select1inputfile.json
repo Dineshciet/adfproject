@@ -1,5 +1,5 @@
 {
-	"name": "input2output",
+	"name": "select1inputfile",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
