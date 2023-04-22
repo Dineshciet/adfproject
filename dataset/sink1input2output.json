@@ -1,5 +1,5 @@
 {
-	"name": "sinkdataset",
+	"name": "sink1input2output",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
