@@ -1,5 +1,5 @@
 {
-	"name": "archivedata",
+	"name": "sink1archive",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
