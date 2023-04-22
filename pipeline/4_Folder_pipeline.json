@@ -124,7 +124,10 @@
 												"referenceName": "folder2_sink",
 												"type": "DatasetReference",
 												"parameters": {
-													"Salesname": "@item().name"
+													"Salesname": {
+														"value": "@item().name",
+														"type": "Expression"
+													}
 												}
 											}
 										]
