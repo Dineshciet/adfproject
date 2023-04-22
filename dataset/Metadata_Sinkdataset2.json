@@ -16,10 +16,10 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@dataset().sink_filename1",
+					"value": "@dataset().sink_filename2",
 					"type": "Expression"
 				},
-				"folderPath": "project/output/Sales",
+				"folderPath": "project/output",
 				"fileSystem": "projectcontainer"
 			},
 			"columnDelimiter": ",",
