@@ -192,7 +192,13 @@
 							"outputs": [
 								{
 									"referenceName": "Metadata_Sinkdataset2",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"sink_filename2": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						},
