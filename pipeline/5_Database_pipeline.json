@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "select * from [SalesLT].[Customer] where CustomerID = 5;",
+						"sqlReaderQuery": "select * from [SalesLT].[Customer] where CustomerID > 5;",
 						"queryTimeout": "00:05:00",
 						"partitionOption": "None"
 					},
