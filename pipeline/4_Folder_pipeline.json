@@ -121,7 +121,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "Sink2dataset",
+												"referenceName": "folder2_sink",
 												"type": "DatasetReference",
 												"parameters": {
 													"Salesname": "@item().name"
