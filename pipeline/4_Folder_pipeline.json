@@ -190,10 +190,10 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "Metadata_sinkdataset",
+												"referenceName": "Sink_folder1",
 												"type": "DatasetReference",
 												"parameters": {
-													"sink_filename": {
+													"Folder1_sinkfilename": {
 														"value": "@item().name",
 														"type": "Expression"
 													}
