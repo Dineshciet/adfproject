@@ -124,10 +124,10 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "folder2_sink",
+												"referenceName": "sink_folder2",
 												"type": "DatasetReference",
 												"parameters": {
-													"Salesname": {
+													"Folder2filename_sink": {
 														"value": "@item().name",
 														"type": "Expression"
 													}
