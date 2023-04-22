@@ -1,5 +1,5 @@
 {
-	"name": "SaleDelimitedfile",
+	"name": "input2output",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
