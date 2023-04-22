@@ -56,14 +56,14 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "sink1input2output",
+						"referenceName": "sink1output",
 						"type": "DatasetReference"
 					}
 				]
 			},
 			{
 				"name": "salecopy2",
-				"description": "selected 1 file from output to archive",
+				"description": "salecopy1 output file store into archive",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -116,13 +116,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "sink1input2output",
+						"referenceName": "sink1output",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "archivedata",
+						"referenceName": "sink1archive",
 						"type": "DatasetReference"
 					}
 				]
@@ -148,7 +148,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "sink1input2output",
+						"referenceName": "sink1output",
 						"type": "DatasetReference"
 					},
 					"enableLogging": false,
