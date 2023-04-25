@@ -24,7 +24,7 @@
 			}
 		],
 		"parameters": {
-			"Input": {
+			"input_value": {
 				"type": "string"
 			}
 		},
