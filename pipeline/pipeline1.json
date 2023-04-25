@@ -14,12 +14,20 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/dineshciet619@live.com/Widgets_test"
+				},
 				"linkedServiceName": {
-					"referenceName": "AzureDatabricks",
+					"referenceName": "AzureDatabricksnew",
 					"type": "LinkedServiceReference"
 				}
 			}
 		],
+		"parameters": {
+			"Input": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
