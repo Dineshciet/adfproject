@@ -1,5 +1,5 @@
 {
-	"name": "2_selectinputfolder",
+	"name": "selectinputfolder2",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
