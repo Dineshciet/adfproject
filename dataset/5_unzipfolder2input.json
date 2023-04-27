@@ -10,10 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().sinkfilename",
-					"type": "Expression"
-				},
 				"folderPath": "Dinesh_assign1/Input",
 				"fileSystem": "projectcontainer"
 			},
