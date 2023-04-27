@@ -1,5 +1,5 @@
 {
-	"name": "4_unzipfolder2input",
+	"name": "5_unzipfolder2input",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
