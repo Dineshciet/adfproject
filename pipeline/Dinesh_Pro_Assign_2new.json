@@ -22,10 +22,12 @@
 					"fieldList": [
 						"exists",
 						"itemName",
-						"lastModified"
+						"lastModified",
+						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
