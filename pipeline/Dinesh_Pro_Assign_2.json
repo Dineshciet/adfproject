@@ -27,6 +27,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -100,13 +101,25 @@
 							"inputs": [
 								{
 									"referenceName": "4_unzipfolder_filename",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"sourcefilename": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "5_unzipfolder2input",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"sinkfilename": {
+											"value": "@item().name()",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
