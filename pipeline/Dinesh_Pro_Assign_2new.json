@@ -105,7 +105,13 @@
 							"outputs": [
 								{
 									"referenceName": "5_unzipfolder2input",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"sourcefilename": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
