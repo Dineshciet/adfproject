@@ -3,11 +3,11 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get_Filename",
+				"name": "Get_Filename1",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
-					"timeout": "0.12:00:00",
+					"timeout": "0.1:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
@@ -39,7 +39,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get_Filename",
+						"activity": "Get_Filename1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
