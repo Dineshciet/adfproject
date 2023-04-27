@@ -66,19 +66,6 @@
 				]
 			},
 			{
-				"name": "Execute Pipeline1",
-				"type": "ExecutePipeline",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"pipeline": {
-						"referenceName": "Dinesh_Pro_Assign_2new",
-						"type": "PipelineReference"
-					},
-					"waitOnCompletion": true
-				}
-			},
-			{
 				"name": "If Condition1",
 				"type": "IfCondition",
 				"dependsOn": [
