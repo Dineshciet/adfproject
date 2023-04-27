@@ -59,7 +59,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "2_getfilenames",
+						"referenceName": "2_selectinputfolder",
 						"type": "DatasetReference"
 					}
 				]
