@@ -15,10 +15,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().unzipfilename",
-					"type": "Expression"
-				},
+				"fileName": "Copy of SalesLTProduct.txt",
 				"folderPath": "Dinesh_assign1/Input",
 				"fileSystem": "projectcontainer"
 			},
