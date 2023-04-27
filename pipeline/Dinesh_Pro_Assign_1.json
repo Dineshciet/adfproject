@@ -63,40 +63,6 @@
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "If Condition1",
-				"type": "IfCondition",
-				"dependsOn": [
-					{
-						"activity": "Zip to input",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"expression": {
-						"value": "@if( empty(activity('Zip to input').output.childItems ),false,true)",
-						"type": "Expression"
-					},
-					"ifTrueActivities": [
-						{
-							"name": "Execute Pipeline2",
-							"type": "ExecutePipeline",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "Dinesh_Pro_Assign_2new",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true
-							}
-						}
-					]
-				}
 			}
 		],
 		"annotations": []
