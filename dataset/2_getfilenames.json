@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "Dinesh_assign1/Input/AdventureWorksLT2012",
+				"folderPath": "Dinesh_assign1/Input",
 				"fileSystem": "projectcontainer"
 			},
 			"columnDelimiter": ",",
