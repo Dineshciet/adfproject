@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"sourcefilename": {
+			"sinkfilename": {
 				"type": "string"
 			}
 		},
@@ -16,7 +16,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@dataset().sourcefilename",
+					"value": "@dataset().sinkfilename",
 					"type": "Expression"
 				},
 				"folderPath": "Dinesh_assign1/Input",
