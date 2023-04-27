@@ -177,7 +177,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "3_unzipfolder2input",
+									"referenceName": "4_unzipfolder2input",
 									"type": "DatasetReference",
 									"parameters": {
 										"unzipfilename": {
