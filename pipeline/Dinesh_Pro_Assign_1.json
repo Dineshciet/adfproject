@@ -68,6 +68,19 @@
 			{
 				"name": "Execute Pipeline1",
 				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Dinesh_Pro_Assign_2new",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
 				"dependsOn": [
 					{
 						"activity": "Zip to input",
@@ -78,11 +91,25 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"pipeline": {
-						"referenceName": "Dinesh_Pro_Assign_2new",
-						"type": "PipelineReference"
+					"expression": {
+						"value": "@if( empty(activity('Zip to input').output.childItems ),false,true)",
+						"type": "Expression"
 					},
-					"waitOnCompletion": true
+					"ifTrueActivities": [
+						{
+							"name": "Execute Pipeline2",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Dinesh_Pro_Assign_2new",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					]
 				}
 			}
 		],
