@@ -14,11 +14,11 @@
 				"folderPath": "Dinesh_assign1",
 				"fileSystem": "projectcontainer"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "\t",
 			"compressionCodec": "ZipDeflate",
 			"compressionLevel": "Optimal",
 			"escapeChar": "\\",
-			"firstRowAsHeader": false,
+			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": []
