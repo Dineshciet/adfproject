@@ -126,6 +126,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"var1": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
