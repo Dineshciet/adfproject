@@ -126,11 +126,6 @@
 				}
 			}
 		],
-		"variables": {
-			"var1name": {
-				"type": "String"
-			}
-		},
 		"annotations": []
 	}
 }
