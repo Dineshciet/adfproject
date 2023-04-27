@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "3_getfilenames",
+						"referenceName": "getfilenames3",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -101,7 +101,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "4_unzipfolder_filename",
+									"referenceName": "unzipfolder_filename4",
 									"type": "DatasetReference",
 									"parameters": {
 										"sourcefilename": {
@@ -113,7 +113,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "5_unzipfolder2input",
+									"referenceName": "unzipfolder2input5",
 									"type": "DatasetReference",
 									"parameters": {
 										"sinkfilename": {
