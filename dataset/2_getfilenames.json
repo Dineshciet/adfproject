@@ -15,10 +15,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().Sourcefilename",
-					"type": "Expression"
-				},
 				"folderPath": "Dinesh_assign1/Input/AdventureWorksLT2012",
 				"fileSystem": "projectcontainer"
 			},
