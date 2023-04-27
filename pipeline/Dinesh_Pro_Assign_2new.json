@@ -99,7 +99,13 @@
 							"inputs": [
 								{
 									"referenceName": "4_unzipfolder_filename",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"sourcefilename": {
+											"value": "@item().name()",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
@@ -107,7 +113,7 @@
 									"referenceName": "5_unzipfolder2input",
 									"type": "DatasetReference",
 									"parameters": {
-										"sourcefilename": {
+										"sinkfilename": {
 											"value": "@item().name",
 											"type": "Expression"
 										}
