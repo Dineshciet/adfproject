@@ -22,7 +22,7 @@
 				"folderPath": "Dinesh_assign1/Input",
 				"fileSystem": "projectcontainer"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "\t",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
