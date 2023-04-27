@@ -20,7 +20,6 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"childItems",
 						"exists",
 						"itemName",
 						"lastModified"
@@ -100,25 +99,13 @@
 							"inputs": [
 								{
 									"referenceName": "4_unzipfolder_filename",
-									"type": "DatasetReference",
-									"parameters": {
-										"unzipfolderfilename": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "5_unzipfolder2input",
-									"type": "DatasetReference",
-									"parameters": {
-										"unzipfilename": {
-											"value": "@item().name()",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							]
 						}
