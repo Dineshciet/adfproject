@@ -48,7 +48,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get_Filename1').output.childItems",
+						"value": "@activity('Get_Filename1').childItems",
 						"type": "Expression"
 					},
 					"activities": [
@@ -126,11 +126,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"var1": {
-				"type": "string"
-			}
-		},
 		"annotations": []
 	}
 }
