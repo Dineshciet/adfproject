@@ -22,8 +22,9 @@
 				"folderPath": "Dinesh_assign1/Output/Product",
 				"fileSystem": "projectcontainer"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "\t",
 			"escapeChar": "\\",
+			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": []
