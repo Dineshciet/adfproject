@@ -19,7 +19,7 @@
 					"value": "@dataset().unzipfolderfilename",
 					"type": "Expression"
 				},
-				"folderPath": "Dinesh_assign1/Input/AdventureWorksLT2012",
+				"folderPath": "Dinesh_assign1/AdventureWorksLT2012",
 				"fileSystem": "projectcontainer"
 			},
 			"columnDelimiter": ",",
