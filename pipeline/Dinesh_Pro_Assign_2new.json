@@ -110,13 +110,7 @@
 							"outputs": [
 								{
 									"referenceName": "5_unzipfolder2input",
-									"type": "DatasetReference",
-									"parameters": {
-										"sinkfilename": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							]
 						}
