@@ -165,8 +165,14 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "2_getfilenames",
-									"type": "DatasetReference"
+									"referenceName": "3_unzipfolder_filename",
+									"type": "DatasetReference",
+									"parameters": {
+										"unzipfolderfilename": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
