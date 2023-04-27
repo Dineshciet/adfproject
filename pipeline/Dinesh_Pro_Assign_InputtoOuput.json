@@ -215,10 +215,10 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "input2output8",
+												"referenceName": "input2output9",
 												"type": "DatasetReference",
 												"parameters": {
-													"sinkcusfile": {
+													"sinkoutputpro": {
 														"value": "@item().name",
 														"type": "Expression"
 													}
