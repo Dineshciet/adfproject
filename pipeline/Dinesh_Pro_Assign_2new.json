@@ -127,6 +127,11 @@
 				}
 			}
 		],
+		"variables": {
+			"varname": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
