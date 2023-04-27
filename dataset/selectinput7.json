@@ -1,5 +1,5 @@
 {
-	"name": "selectinput",
+	"name": "selectinput7",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
