@@ -1,5 +1,5 @@
 {
-	"name": "3_getfilenames",
+	"name": "getfilenames3",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
