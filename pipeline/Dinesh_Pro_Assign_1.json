@@ -53,13 +53,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "1_selectZipfile",
+						"referenceName": "selectZipfile1",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "2_selectinputfolder",
+						"referenceName": "selectinputfolder2",
 						"type": "DatasetReference"
 					}
 				]
@@ -78,7 +78,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Dinesh_Pro_Assign_2new",
+						"referenceName": "Dinesh_Pro_Assign_ZIPtoInput",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
