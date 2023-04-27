@@ -13,9 +13,9 @@
 				"folderPath": "Dinesh_assign1/Input",
 				"fileSystem": "projectcontainer"
 			},
-			"columnDelimiter": "\t",
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
+			"firstRowAsHeader": false,
 			"quoteChar": "\""
 		},
 		"schema": []
