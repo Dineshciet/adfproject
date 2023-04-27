@@ -1248,7 +1248,7 @@
 								"type": "DelimitedTextSource",
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
+									"recursive": false,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -1282,78 +1282,25 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "1_selectZipfile",
+								"referenceName": "selectZipfile1",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "2_selectinputfolder",
+								"referenceName": "selectinputfolder2",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						]
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/1_selectZipfile')]",
-				"[concat(variables('factoryId'), '/datasets/2_selectinputfolder')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Dinesh_Pro_Assign_2')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Get_Filename",
-						"type": "GetMetadata",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.1:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "3_getfilenames",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"fieldList": [
-								"exists",
-								"itemName",
-								"itemType",
-								"lastModified",
-								"childItems"
-							],
-							"storeSettings": {
-								"type": "AzureBlobFSReadSettings",
-								"recursive": true,
-								"enablePartitionDiscovery": false
-							},
-							"formatSettings": {
-								"type": "DelimitedTextReadSettings"
-							}
-						}
 					},
 					{
-						"name": "ForEach1",
-						"type": "ForEach",
+						"name": "Execute Pipeline1",
+						"type": "ExecutePipeline",
 						"dependsOn": [
 							{
-								"activity": "Get_Filename",
+								"activity": "Zip to input",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -1361,25 +1308,33 @@
 						],
 						"userProperties": [],
 						"typeProperties": {
-							"items": {
-								"value": "@activity('Get_Filename').output.childItems",
-								"type": "Expression"
+							"pipeline": {
+								"referenceName": "Dinesh_Pro_Assign_ZIPtoInput",
+								"type": "PipelineReference"
 							},
-							"activities": [
-								{
-									"name": "Set variable1",
-									"type": "SetVariable",
-									"dependsOn": [],
-									"userProperties": [],
-									"typeProperties": {
-										"variableName": "varname",
-										"value": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
-								}
-							]
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "Execute Pipeline2",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "Execute Pipeline1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "Dinesh_Pro_Assign_InputtoOuput",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
 						}
 					}
 				],
@@ -1387,19 +1342,17 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"variables": {
-					"varname": {
-						"type": "String"
-					}
-				},
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/3_getfilenames')]"
+				"[concat(variables('factoryId'), '/datasets/selectZipfile1')]",
+				"[concat(variables('factoryId'), '/datasets/selectinputfolder2')]",
+				"[concat(variables('factoryId'), '/pipelines/Dinesh_Pro_Assign_ZIPtoInput')]",
+				"[concat(variables('factoryId'), '/pipelines/Dinesh_Pro_Assign_InputtoOuput')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Dinesh_Pro_Assign_2new')]",
+			"name": "[concat(parameters('factoryName'), '/Dinesh_Pro_Assign_ZIPtoInput')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1418,12 +1371,16 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataset": {
-								"referenceName": "3_getfilenames",
+								"referenceName": "getfilenames3",
 								"type": "DatasetReference",
 								"parameters": {}
 							},
 							"fieldList": [
-								"childItems"
+								"childItems",
+								"exists",
+								"itemName",
+								"itemType",
+								"lastModified"
 							],
 							"storeSettings": {
 								"type": "AzureBlobFSReadSettings",
@@ -1458,7 +1415,7 @@
 									"type": "Copy",
 									"dependsOn": [],
 									"policy": {
-										"timeout": "0.1:00:00",
+										"timeout": "0.12:00:00",
 										"retry": 0,
 										"retryIntervalInSeconds": 30,
 										"secureOutput": false,
@@ -1500,7 +1457,7 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "4_unzipfolder_filename",
+											"referenceName": "unzipfolder_filename4",
 											"type": "DatasetReference",
 											"parameters": {
 												"sourcefilename": {
@@ -1512,9 +1469,14 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "5_unzipfolder2input",
+											"referenceName": "unzipfolder2input5",
 											"type": "DatasetReference",
-											"parameters": {}
+											"parameters": {
+												"sinkfilename": {
+													"value": "@item().name",
+													"type": "Expression"
+												}
+											}
 										}
 									]
 								}
@@ -1529,9 +1491,9 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/3_getfilenames')]",
-				"[concat(variables('factoryId'), '/datasets/4_unzipfolder_filename')]",
-				"[concat(variables('factoryId'), '/datasets/5_unzipfolder2input')]"
+				"[concat(variables('factoryId'), '/datasets/getfilenames3')]",
+				"[concat(variables('factoryId'), '/datasets/unzipfolder_filename4')]",
+				"[concat(variables('factoryId'), '/datasets/unzipfolder2input5')]"
 			]
 		},
 		{
@@ -1663,7 +1625,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/1_selectZipfile')]",
+			"name": "[concat(parameters('factoryName'), '/selectZipfile1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1680,27 +1642,21 @@
 						"folderPath": "Dinesh_assign1",
 						"fileSystem": "projectcontainer"
 					},
-					"columnDelimiter": ",",
+					"columnDelimiter": "\t",
 					"compressionCodec": "ZipDeflate",
 					"compressionLevel": "Optimal",
 					"escapeChar": "\\",
+					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
-				"schema": [
-					{
-						"type": "String"
-					},
-					{
-						"type": "String"
-					}
-				]
+				"schema": []
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/2_selectinputfolder')]",
+			"name": "[concat(parameters('factoryName'), '/selectinputfolder2')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1716,8 +1672,9 @@
 						"folderPath": "Dinesh_assign1",
 						"fileSystem": "projectcontainer"
 					},
-					"columnDelimiter": ",",
+					"columnDelimiter": "\t",
 					"escapeChar": "\\",
+					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
 				"schema": []
@@ -1727,7 +1684,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/3_getfilenames')]",
+			"name": "[concat(parameters('factoryName'), '/getfilenames3')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1755,7 +1712,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/4_unzipfolder_filename')]",
+			"name": "[concat(parameters('factoryName'), '/unzipfolder_filename4')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1792,7 +1749,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/5_unzipfolder2input')]",
+			"name": "[concat(parameters('factoryName'), '/unzipfolder2input5')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1800,15 +1757,24 @@
 					"referenceName": "AzureDataLakeStorage1",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"sinkfilename": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().sinkfilename",
+							"type": "Expression"
+						},
 						"folderPath": "Dinesh_assign1/Input",
 						"fileSystem": "projectcontainer"
 					},
-					"columnDelimiter": ",",
+					"columnDelimiter": "\t",
 					"escapeChar": "\\",
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
@@ -2804,6 +2770,396 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/data1')]",
 				"[concat(variables('factoryId'), '/datasets/dataflowoutput')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Dinesh_Pro_Assign_InputtoOuput')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Get_Filename2",
+						"type": "GetMetadata",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.1:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "getfilenames6",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"fieldList": [
+								"childItems",
+								"exists",
+								"itemName",
+								"itemType",
+								"lastModified"
+							],
+							"storeSettings": {
+								"type": "AzureBlobFSReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							},
+							"formatSettings": {
+								"type": "DelimitedTextReadSettings"
+							}
+						}
+					},
+					{
+						"name": "ForEach1",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Get_Filename2",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Get_Filename2').output.childItems",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "If Condition1",
+									"type": "IfCondition",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@endswith(item().name,'Customer.txt')",
+											"type": "Expression"
+										},
+										"ifTrueActivities": [
+											{
+												"name": "Copy data1",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "0.12:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "DelimitedTextSource",
+														"storeSettings": {
+															"type": "AzureBlobFSReadSettings",
+															"recursive": true,
+															"enablePartitionDiscovery": false
+														},
+														"formatSettings": {
+															"type": "DelimitedTextReadSettings"
+														}
+													},
+													"sink": {
+														"type": "DelimitedTextSink",
+														"storeSettings": {
+															"type": "AzureBlobFSWriteSettings"
+														},
+														"formatSettings": {
+															"type": "DelimitedTextWriteSettings",
+															"quoteAllText": true,
+															"fileExtension": ".txt"
+														}
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"typeConversion": true,
+														"typeConversionSettings": {
+															"allowDataTruncation": true,
+															"treatBooleanAsNumber": false
+														}
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "selectinput7",
+														"type": "DatasetReference",
+														"parameters": {
+															"Cus_srcfilename": {
+																"value": "@item().name",
+																"type": "Expression"
+															}
+														}
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "input2output8",
+														"type": "DatasetReference",
+														"parameters": {
+															"sinkcusfile": {
+																"value": "@item().name",
+																"type": "Expression"
+															}
+														}
+													}
+												]
+											}
+										]
+									}
+								},
+								{
+									"name": "If Condition1_copy1",
+									"type": "IfCondition",
+									"dependsOn": [
+										{
+											"activity": "If Condition1",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"userProperties": [],
+									"typeProperties": {
+										"expression": {
+											"value": "@endswith(item().name,'Product.txt')",
+											"type": "Expression"
+										},
+										"ifTrueActivities": [
+											{
+												"name": "Copy data1_copy1",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "0.12:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "DelimitedTextSource",
+														"storeSettings": {
+															"type": "AzureBlobFSReadSettings",
+															"recursive": true,
+															"enablePartitionDiscovery": false
+														},
+														"formatSettings": {
+															"type": "DelimitedTextReadSettings"
+														}
+													},
+													"sink": {
+														"type": "DelimitedTextSink",
+														"storeSettings": {
+															"type": "AzureBlobFSWriteSettings"
+														},
+														"formatSettings": {
+															"type": "DelimitedTextWriteSettings",
+															"quoteAllText": true,
+															"fileExtension": ".txt"
+														}
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"typeConversion": true,
+														"typeConversionSettings": {
+															"allowDataTruncation": true,
+															"treatBooleanAsNumber": false
+														}
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "selectinput7",
+														"type": "DatasetReference",
+														"parameters": {
+															"Cus_srcfilename": {
+																"value": "@item().name",
+																"type": "Expression"
+															}
+														}
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "input2output9",
+														"type": "DatasetReference",
+														"parameters": {
+															"sinkoutputpro": {
+																"value": "@item().name",
+																"type": "Expression"
+															}
+														}
+													}
+												]
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/getfilenames6')]",
+				"[concat(variables('factoryId'), '/datasets/selectinput7')]",
+				"[concat(variables('factoryId'), '/datasets/input2output8')]",
+				"[concat(variables('factoryId'), '/datasets/input2output9')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/getfilenames6')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "Dinesh_assign1/Input",
+						"fileSystem": "projectcontainer"
+					},
+					"columnDelimiter": "\t",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/selectinput7')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"Cus_srcfilename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().Cus_srcfilename",
+							"type": "Expression"
+						},
+						"folderPath": "Dinesh_assign1/Input",
+						"fileSystem": "projectcontainer"
+					},
+					"columnDelimiter": "\t",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/input2output8')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"sinkcusfile": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().sinkcusfile",
+							"type": "Expression"
+						},
+						"folderPath": "Dinesh_assign1/Output/Customer",
+						"fileSystem": "projectcontainer"
+					},
+					"columnDelimiter": "\t",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/input2output9')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"sinkoutputpro": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().sinkoutputpro",
+							"type": "Expression"
+						},
+						"folderPath": "Dinesh_assign1/Output/Product",
+						"fileSystem": "projectcontainer"
+					},
+					"columnDelimiter": "\t",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
 			]
 		}
 	]
