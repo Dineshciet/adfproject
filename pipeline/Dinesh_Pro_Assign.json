@@ -59,7 +59,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "2_unzipfile_to_input",
+						"referenceName": "2_getfilenames",
 						"type": "DatasetReference"
 					}
 				]
@@ -85,7 +85,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "2_unzipfile_to_input",
+						"referenceName": "2_getfilenames",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -98,6 +98,29 @@
 					"formatSettings": {
 						"type": "DelimitedTextReadSettings"
 					}
+				}
+			},
+			{
+				"name": "Placeintoinputfolder",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"enableStaging": false
 				}
 			}
 		],
