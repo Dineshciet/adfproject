@@ -15,15 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/dineshciet619@live.com/assignment",
-					"baseParameters": {
-						"Input_File_path": {
-							"value": "@pipeline().parameters.pp_input",
-							"type": "Expression"
-						},
-						"Output_Table": "5",
-						"File_delimited": "5"
-					}
+					"notebookPath": "/Users/dineshciet619@live.com/assignment"
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureDatabricksnew",
