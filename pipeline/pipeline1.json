@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/dineshciet619@live.com/Widgets_test",
+					"notebookPath": "/Users/dineshciet619@live.com/assignment",
 					"baseParameters": {
 						"Input_File_path": {
 							"value": "@pipeline().parameters.pp_input",
