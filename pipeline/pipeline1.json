@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"notebookPath": "/Users/dineshciet619@live.com/Test",
 					"baseParameters": {
-						"filename": ""
+						"filename": "SalesLTCustomer.txt"
 					}
 				},
 				"linkedServiceName": {
