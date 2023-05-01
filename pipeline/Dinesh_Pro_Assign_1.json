@@ -124,7 +124,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/dineshciet619@live.com/assignment"
+					"notebookPath": "/Users/dineshciet619@live.com/Test",
+					"baseParameters": {
+						"filename": "SalesLTAddress.txt"
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureDatabricksnew",
