@@ -15,7 +15,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/dineshciet619@live.com/Test"
+					"notebookPath": "/Users/dineshciet619@live.com/Test",
+					"baseParameters": {
+						"filename": "SalesLTCustomer.txt"
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "USE_AzureDatabricks",
