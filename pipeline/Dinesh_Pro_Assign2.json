@@ -54,7 +54,21 @@
 				"inputs": [
 					{
 						"referenceName": "unzipfolder1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"container": {
+								"value": "@variables('containerne')",
+								"type": "Expression"
+							},
+							"Folderpath": {
+								"value": "@variables('Foldername')",
+								"type": "Expression"
+							},
+							"filename": {
+								"value": "@variables('Filepath1')",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
