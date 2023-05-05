@@ -56,12 +56,16 @@
 						"referenceName": "unzipfolder1",
 						"type": "DatasetReference",
 						"parameters": {
-							"container": {
+							"src_container": {
 								"value": "@pipeline().parameters.container",
 								"type": "Expression"
 							},
-							"Folderpath": {
+							"src_folderpath": {
 								"value": "@pipeline().parameters.in_folder",
+								"type": "Expression"
+							},
+							"src_filename": {
+								"value": "@pipeline().parameters.Filename",
 								"type": "Expression"
 							}
 						}
@@ -69,14 +73,14 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "unzipfolder1",
+						"referenceName": "unzipfolder2",
 						"type": "DatasetReference",
 						"parameters": {
-							"container": {
+							"sin_container": {
 								"value": "@pipeline().parameters.container",
 								"type": "Expression"
 							},
-							"Folderpath": {
+							"sink_folder": {
 								"value": "@pipeline().parameters.out_folder",
 								"type": "Expression"
 							}
