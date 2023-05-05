@@ -148,7 +148,13 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/dineshciet619@live.com/Project2_Final"
+					"notebookPath": "/Users/dineshciet619@live.com/Project2_Final",
+					"baseParameters": {
+						"mainpath": {
+							"value": "@concat('/mnt/',pipeline().parameters.container,'/',pipeline().parameters.in_folder,'/',activity('Get Metadata1').output.childItems[0])",
+							"type": "Expression"
+						}
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "USE_AzureDatabricks",
