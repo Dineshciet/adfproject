@@ -155,6 +155,17 @@
 				}
 			}
 		],
+		"variables": {
+			"containerne": {
+				"type": "String"
+			},
+			"Foldername": {
+				"type": "String"
+			},
+			"Filepath1": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
